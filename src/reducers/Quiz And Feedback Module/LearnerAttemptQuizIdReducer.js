@@ -1,23 +1,22 @@
 import {
-    FETCH_QUESTIONS_REQUEST,
-    FETCH_QUESTIONS_SUCCESS,
-    FETCH_QUESTIONS_FAILURE,
+    CREATE_ATTEMPT_REQUEST,
+    CREATE_ATTEMPT_SUCCESS,
+    CREATE_ATTEMPT_FAILURE
   } from '../../../src/actions/Quiz And Feedback Module/AttemptQuizAction';
  
 const initialState = {
   loading: false,
-  questions: {},
   error: null,
 };
  
-const AttemptQuizReducer = (state = initialState, action) => {
+const LearnerAttemptQuizIdReducer = (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_QUESTIONS_REQUEST:
+    case CREATE_ATTEMPT_REQUEST:
       return { ...state, loading: true };
-    case FETCH_QUESTIONS_SUCCESS:
-      console.log("attemptquiz Reducer", action.payload);
+    case CREATE_ATTEMPT_SUCCESS:
+      console.log("LearnerAttemptQuizId Reducer", action.payload);
       return { ...state, loading: false, questions: action.payload };
-    case FETCH_QUESTIONS_FAILURE:
+    case CREATE_ATTEMPT_FAILURE:
       return { ...state, loading: false, error: action.payload };
     default:
       return state;
@@ -25,5 +24,5 @@ const AttemptQuizReducer = (state = initialState, action) => {
 };
  
 
-export default AttemptQuizReducer
+export default LearnerAttemptQuizIdReducer
 

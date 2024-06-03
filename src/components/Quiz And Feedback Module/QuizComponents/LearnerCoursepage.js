@@ -10,10 +10,13 @@ import { fetchQuizInstructionRequest } from "../../../actions/Quiz And Feedback 
 
 function LearnerCoursepage() {
   const [noQuizTopicId, setNoQuizTopicId] = useState(
-    "0d3d682d-56e2-4639-a83f-08d51efbc640"
+    "e3a895e4-1b3f-45b8-9c0a-98f9c0fa4996"
   );
   const [yesQuizTopicId, setYesQuizTopicId] = useState(
-    "0d3d682d-56e2-4639-a83f-08d51efbc640"
+    "e3a895e4-1b3f-45b8-9c0a-98f9c0fa4996"
+  );
+  const [LearnerId, setLearnerId] = useState(
+    "6e09200f-1235-4d03-969d-4fd228c5c802"
   );
   const quizId = useSelector(
     (state) => state.fetchquizinstruction.quizinstructiondetails
@@ -22,6 +25,7 @@ function LearnerCoursepage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [topicId, setTopicId] = useState("");
+ 
 
   console.log("course page quizId", quizId, isSuccess);
 
@@ -30,7 +34,9 @@ function LearnerCoursepage() {
     setTopicId(topicId);
     dispatch(fetchQuizInstructionRequest(topicId));
     sessionStorage.setItem("topicId", topicId);
-    sessionStorage.setItem("quizId", quizId);
+    sessionStorage.setItem("quizId", quizId.quizId);
+    // console.log(quizId);
+    sessionStorage.setItem("LearnerId",LearnerId);
     if (isSuccess) {
       navigate("/instruction");
     }

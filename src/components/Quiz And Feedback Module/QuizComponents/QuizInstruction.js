@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
 import Button from "react-bootstrap/Button";
 import Box from "@mui/joy/Box";
 import Card from "@mui/joy/Card";
@@ -12,27 +12,47 @@ import Divider from "@mui/joy/Divider";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchQuizInstructionRequest} from "../../../actions/Quiz And Feedback Module/QuizInstructionAction";
+import { CreateAttemptRequest } from "../../../actions/Quiz And Feedback Module/AttemptQuizAction";
 // import { fetchQuizInstructionRequest } from "../../actions/QuizInstructionAction";
+import { fetchlearneridRequest } from "../../../actions/Quiz And Feedback Module/GetLearnerIDAction";
 
 function QuizInstruction() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const topicId = sessionStorage.getItem("topicId");
+  const quizId = sessionStorage.getItem("quizId");
+  const LearnerId = sessionStorage.getItem("LearnerId");
   const quizinstructions = useSelector(
     (state) => state.fetchquizinstruction.quizinstructiondetails
   );
+  const learnerId = sessionStorage.getItem("UserSessionID");
+  const getlearners = useSelector(
+    (state) => state.fetchlearnerid.learnerId
+  );
+  console.log(getlearners);
   const divStyle = {
     boxShadow: "0px 4px 8px #23275c",
   };
-
+  console.log("quizid",quizId);
+  console.log("learnerid",LearnerId);
+const [TakeQuiz,setTakeQuiz]=useState({
+  learnerId:LearnerId,
+  quizId:quizId
+})
   useEffect(() => {
     dispatch(fetchQuizInstructionRequest(topicId));
+    dispatch(fetchlearneridRequest(learnerId));
   }, [dispatch]);
 
   const handleNavigate = () => {
     sessionStorage.removeItem("topicId");
     navigate("/quizengine");
   };
+//  console.log("takequiz");
+  const handleTakeQuiz=()=>{
+     dispatch(CreateAttemptRequest(TakeQuiz));
+     navigate("/attemptquiz");
+  }
 
   return (
     <div>
@@ -65,7 +85,7 @@ function QuizInstruction() {
             gap: 2,
           }}
         >
-          <Card style={{ height: "50px" }} variant="soft">
+          <Card  style={{ height: "50px" , marginLeft:"-13%" }} variant="soft">
             <CardContent>
               <Typography level="title-md">
                 {quizinstructions.nameOfQuiz} Assessment
@@ -90,7 +110,11 @@ function QuizInstruction() {
                 <b>Quiz Instruction</b>
               </Typography>
               <Typography>
-                <b>Dear All,</b>
+              <b>
+                  Dear {getlearners.learnerFirstName}
+                  {" "}
+                  {getlearners.learnerLastName},
+                </b>
               </Typography>
               <Typography>
                 <li>
@@ -121,6 +145,7 @@ function QuizInstruction() {
           </Card>
           <div style={{ marginLeft: "100%" }}>
             <Button
+             onClick={handleTakeQuiz}
               variant="default"
               style={{
                 backgroundColor: "#365486",

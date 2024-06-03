@@ -8,6 +8,7 @@ export const AttemptQuiz = () => {
   const quizId = "43588fc6-1eb2-4459-8313-527b4276c596";
   const questions = useSelector((state) => state.AttemptQuiz.questions);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  
 
   useEffect(() => {
     fetchQuestions(quizId);
