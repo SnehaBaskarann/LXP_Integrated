@@ -16,6 +16,7 @@ import QuestionTemplateView from "../View/Quiz And Feedback Module/QuestionTempl
 import LearnerCoursepageView from "../View/Quiz And Feedback Module/LearnerCoursepageview";
 import QuizInstruction from "../components/Quiz And Feedback Module/QuizComponents/QuizInstruction";
 import AttemptQuiz from "../components/Quiz And Feedback Module/QuizComponents/AttemptQuiz";
+import ReviewAnswers from "../components/Quiz And Feedback Module/QuizComponents/ReviewAnswers";
 
 function Routing() {
   return (
@@ -32,6 +33,7 @@ function Routing() {
         <Route path="/quizengine" element={<LearnerCoursepageView />} />
         <Route path="/instruction" element={<QuizInstruction/>} />
         <Route path="/attemptquiz" element={<AttemptQuiz />} />
+        <Route path="/reviewanswer" element={<ReviewAnswers />} />
       </Routes>
     </BrowserRouter>
   );

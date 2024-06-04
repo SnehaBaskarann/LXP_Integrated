@@ -35,7 +35,7 @@ const [selectedQuestion, setSelectedQuestion] = useState(null);
     const handleSubmit = () => {
         try {
             // await GetAllQuestion();
-            navigate('/')
+            navigate('/createquiz')
                 ``
         } catch (error) {
             console.error('Error fetching data:', error)

@@ -11,10 +11,10 @@ import { fetchQuizIdRequest } from "../../../actions/Quiz And Feedback Module/Fe
 
 function CoursePage() {
   const [noQuizTopicId, setNoQuizTopicId] = useState(
-    "e3a895e4-1b3f-45b8-9c0a-98f9c0fa4996"
+    "f50d40ae-9eb5-4674-80f1-c5a25f6e2a0d"
   );
   const [yesQuizTopicId, setYesQuizTopicId] = useState(
-    "28f58f45-43d1-4ba3-84fc-0cc983966e13"
+    "6c4bcc2f-535d-4792-a978-da9e75047120"
   );
   const quizId = useSelector((state) => state.quizId.quizId);
   const isSuccess = useSelector((state) => state.quizId.isSubmitted);

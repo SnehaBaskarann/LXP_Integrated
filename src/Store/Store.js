@@ -35,13 +35,19 @@ import DeleteTopicFeedbackReducer from "../reducers/Quiz And Feedback Module/Del
 import UpdateTopicFeedbackReducer from "../reducers/Quiz And Feedback Module/UpdateTopicFeedbackReducer";
 import GetByIDTopicFeedbackReducer from "../reducers/Quiz And Feedback Module/GetByIDTopicFeedbackReducer";
 import AttemptQuizReducer from "../reducers/Quiz And Feedback Module/AttemptQuizReducer";
-import fetchQuestionsMiddleware from "../middleware/Quiz And Feedback Module/AttemptQuizApi";
 import QuizInstructionReducer from "../reducers/Quiz And Feedback Module/QuizInstructionReducer";
 import { QuizInstructionApi } from "../middleware/Quiz And Feedback Module/QuizInstructionApi";
 import LearnerAttemptQuizIdReducer from "../reducers/Quiz And Feedback Module/LearnerAttemptQuizIdReducer.js";
 import LearnerAttemptQuizIdApi from "../middleware/Quiz And Feedback Module/LearnerAttemptQuizIdApi.js";
 import GetLearnerIDReducer from "../reducers/Quiz And Feedback Module/GetLearnerIDReducer.js";
 import GetLearnerIDApi from "../middleware/Quiz And Feedback Module/GetLearnerIDApi.js";
+import reviewReducer from "../reducers/Quiz And Feedback Module/ReviewReducer";
+import reviewApi from "../middleware/Quiz And Feedback Module/ReviewApi";
+import { fetchQuestionsMiddleware } from "../middleware/Quiz And Feedback Module/AttemptQuizApi";
+import SelectAnswerReducer from "../reducers/Quiz And Feedback Module/SelectAnswerReducer";
+import submitAttemptReducer from "../reducers/Quiz And Feedback Module/SubmitAttemptReducer";
+import { selectAnswerMiddleware } from "../middleware/Quiz And Feedback Module/SelectAnswerApi";
+import submitAttemptMiddleware from "../middleware/Quiz And Feedback Module/SubmitAttemptMiddleware";
 
 export const rootReducer = combineReducers({
   quizId: quizIdReducer,
@@ -63,6 +69,9 @@ export const rootReducer = combineReducers({
   fetchquizinstruction:QuizInstructionReducer,
   learnerattempt:LearnerAttemptQuizIdReducer,
   fetchlearnerid :GetLearnerIDReducer,
+  Review: reviewReducer,
+  SelectAnswer: SelectAnswerReducer,
+  SubmitAttempt: submitAttemptReducer
 });
 
 const store = createStore(
@@ -88,6 +97,9 @@ const store = createStore(
     QuizInstructionApi,
     LearnerAttemptQuizIdApi,
     GetLearnerIDApi,
+    reviewApi,
+    selectAnswerMiddleware,
+    submitAttemptMiddleware
   )
 );
 
