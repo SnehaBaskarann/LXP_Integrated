@@ -13,7 +13,7 @@ export const QuizInstructionApi =
   async (action) => {
     if (action.type === FETCH_QUIZINSTRUCTION_REQUEST) {
       try {
-        console.log("QuizInstruction", action.payload);
+        console.log("QuizInstruction_Topic ID", action.payload);
         const response = await axios.get(`http://localhost:5199/api/QuizEngine/topic/${action.payload}/quiz`);
         console.log("Get Quiz Details API Response:", response.data);
         dispatch(fetchQuizInstructionSuccess(response.data));

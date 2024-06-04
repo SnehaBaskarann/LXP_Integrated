@@ -11,7 +11,8 @@ const reviewApi = ({ dispatch, getState }) => next => async action => {
     console.log('Fetching review data...');
     try {
      // const response = await axios.get(`http://localhost:5199/api/QuizEngine/attempt/${attemptId}/review`);
-      const response = await axios.get(`http://localhost:5199/api/QuizEngine/attempt/${attemptId}`);
+      // const response = await axios.get(`http://localhost:5199/api/QuizEngine/attempt/${attemptId}`);
+      const response = await axios.get(`http://localhost:5199/api/QuizEngine/attempt/${attemptId}/review`);
       console.log('Review data:', response.data);
       dispatch(fetchReviewSuccess(response.data));
     } catch (error) {

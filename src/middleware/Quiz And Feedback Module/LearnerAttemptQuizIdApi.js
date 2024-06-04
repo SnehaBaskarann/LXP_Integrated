@@ -15,8 +15,10 @@ import {
         try {
           console.log("LearnerAttemptId Post", action.payload);
           const response = await axios.post(`http://localhost:5199/api/QuizEngine/attempt?learnerId=${action.payload.learnerId}&quizId=${action.payload.quizId}`);
-          console.log("LearnerAttemptId Post API Response:", response.data);
+          console.log("LearnerAttempt ID:", response.data);
           dispatch(CreateAttemptSuccess(response.data.data));
+          // sessionStorage.setItem("attemptId",response.data.data.learnerAttemptId)
+          // console.log("attempt ID :",response.data.data.learnerAttemptId)
         } catch (error) {
           console.error("API Error:", error.message);
           dispatch(CreateAttemptFailure(error.message));

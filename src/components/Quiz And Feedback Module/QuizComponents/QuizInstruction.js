@@ -22,6 +22,7 @@ function QuizInstruction() {
   const topicId = sessionStorage.getItem("topicId");
   const quizId = sessionStorage.getItem("quizId");
   const LearnerId = sessionStorage.getItem("LearnerId");
+  const AttemptId = sessionStorage.getItem("AttemptId");
   const quizinstructions = useSelector(
     (state) => state.fetchquizinstruction.quizinstructiondetails
   );
@@ -37,7 +38,8 @@ function QuizInstruction() {
   console.log("learnerid",LearnerId);
 const [TakeQuiz,setTakeQuiz]=useState({
   learnerId:LearnerId,
-  quizId:quizId
+  quizId:quizId,
+  attemptId:AttemptId
 })
   useEffect(() => {
     dispatch(fetchQuizInstructionRequest(topicId));

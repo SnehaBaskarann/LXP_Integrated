@@ -10,13 +10,13 @@ import { fetchQuizInstructionRequest } from "../../../actions/Quiz And Feedback 
 
 function LearnerCoursepage() {
   const [noQuizTopicId, setNoQuizTopicId] = useState(
-    "e3a895e4-1b3f-45b8-9c0a-98f9c0fa4996"
+    "f50d40ae-9eb5-4674-80f1-c5a25f6e2a0d"
   );
   const [yesQuizTopicId, setYesQuizTopicId] = useState(
-    "e3a895e4-1b3f-45b8-9c0a-98f9c0fa4996"
+    "6c4bcc2f-535d-4792-a978-da9e75047120"
   );
   const [LearnerId, setLearnerId] = useState(
-    "6e09200f-1235-4d03-969d-4fd228c5c802"
+    "6741af2c-7e5e-4bd8-be9e-2ecc6d5c05d4"
   );
   const quizId = useSelector(
     (state) => state.fetchquizinstruction.quizinstructiondetails
