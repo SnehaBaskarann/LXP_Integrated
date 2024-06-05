@@ -33,7 +33,7 @@ const AttemptQuiz = () => {
   };
 
   const handleOptionChange = (questionId, optionValue, isMSQ) => {
-    const learnerAttemptId = "08dc84ae-7f0b-4e9f-855b-6239567bb3ba";
+    const learnerAttemptId = "08dc851b-dafb-4f66-8b5d-d483fd11d01c";
 
     setSelectedOptions((prevSelectedOptions) => {
       const updatedOptions = { ...prevSelectedOptions };
@@ -64,7 +64,7 @@ const AttemptQuiz = () => {
   };
 
   const handleSubmit = () => {
-    const attemptId = "08dc84ae-7f0b-4e9f-855b-6239567bb3ba";
+    const attemptId = "08dc851b-dafb-4f66-8b5d-d483fd11d01c";
     dispatch(fetchReviewRequest(attemptId));
     navigate('/reviewanswer'); // Navigate to the review page
   };

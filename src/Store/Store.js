@@ -48,6 +48,8 @@ import SelectAnswerReducer from "../reducers/Quiz And Feedback Module/SelectAnsw
 import submitAttemptReducer from "../reducers/Quiz And Feedback Module/SubmitAttemptReducer";
 import { selectAnswerMiddleware } from "../middleware/Quiz And Feedback Module/SelectAnswerApi";
 import submitAttemptMiddleware from "../middleware/Quiz And Feedback Module/SubmitAttemptMiddleware";
+import LearnerScorePageReducer from "../reducers/Quiz And Feedback Module/LearnerScorePageReducer";
+import LearnerScorePageApi from "../middleware/Quiz And Feedback Module/LearnerScorePageApi";
 
 export const rootReducer = combineReducers({
   quizId: quizIdReducer,
@@ -71,7 +73,8 @@ export const rootReducer = combineReducers({
   fetchlearnerid :GetLearnerIDReducer,
   Review: reviewReducer,
   SelectAnswer: SelectAnswerReducer,
-  SubmitAttempt: submitAttemptReducer
+  SubmitAttempt: submitAttemptReducer,
+  learnerscore : LearnerScorePageReducer,
 });
 
 const store = createStore(
@@ -99,7 +102,8 @@ const store = createStore(
     GetLearnerIDApi,
     reviewApi,
     selectAnswerMiddleware,
-    submitAttemptMiddleware
+    submitAttemptMiddleware,
+    LearnerScorePageApi,
   )
 );
 

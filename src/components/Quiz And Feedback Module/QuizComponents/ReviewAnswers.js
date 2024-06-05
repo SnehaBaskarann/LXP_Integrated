@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchReviewRequest } from '../../../actions/Quiz And Feedback Module/ReviewAction';
 import { submitAttemptRequest } from '../../../actions/Quiz And Feedback Module/SubmitAttemptAction';
 import '../../../Styles/Quiz And Feedback Module/ReviewAnswers.css';
+import { useNavigate } from 'react-router-dom';
 
 const ReviewAnswers = ({ attemptId }) => {
   const dispatch = useDispatch();
@@ -12,20 +13,33 @@ const ReviewAnswers = ({ attemptId }) => {
   const submitLoading = useSelector((state) => state.SubmitAttempt.loading);
   const submitError = useSelector((state) => state.SubmitAttempt.error);
   const submitSuccess = useSelector((state) => state.SubmitAttempt.success);
-  const AttemptId = reviewData.learnerAttemptId;
+  const AttemptId = reviewData?.learnerAttemptId;
   const [showPopup, setShowPopup] = useState(false);
+  const [selectedQuestion, setSelectedQuestion] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (attemptId) {
       dispatch(fetchReviewRequest(attemptId));
-      console.log(attemptId);
     }
   }, [dispatch, attemptId]);
 
   const handleSubmit = () => {
     dispatch(submitAttemptRequest(AttemptId));
-    console.log("submit :",AttemptId);
     setShowPopup(false);
+    navigate('/learnerscorepage');
+  };
+
+  const handleNavigate = () => {
+    navigate('/attemptquiz');
+  }
+
+  const handleSelectQuestion = (index) => {
+    setSelectedQuestion(index);
+    const questionElement = document.getElementById(`question-${index}`);
+    if (questionElement) {
+      questionElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
   };
 
 //   if (loading) {
@@ -42,8 +56,30 @@ const ReviewAnswers = ({ attemptId }) => {
 
   return (
     <div className="review-container">
+        {/* <h1>Review Answers</h1> */}
+        <br/>
+      <div className="question-grid-container">
+        {reviewData.questionsAndAnswers.length > 0 && (
+          <div className="question-grid">
+            {reviewData.questionsAndAnswers.map((_, index) => (
+              <div
+                key={index}
+                className={`question-number ${selectedQuestion === index ? 'active' : ''}`}
+                onClick={() => handleSelectQuestion(index)}
+              >
+                {index + 1}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+      
       {reviewData.questionsAndAnswers.map((question, index) => (
-        <div key={question.quizQuestionId} className="question-container">
+        <div
+          key={question.quizQuestionId}
+          id={`question-${index}`}
+          className="review-question-container"
+        >
           <h5>{index + 1}: {question.question}</h5>
           <ul>
             {question.options.map((option, optionIndex) => (
@@ -61,7 +97,10 @@ const ReviewAnswers = ({ attemptId }) => {
           </ul>
         </div>
       ))}
+      
       <button className="submit-button" onClick={() => setShowPopup(true)}>Submit</button>
+      <button className="previous-button" onClick={handleNavigate}>Previous Page</button>
+      
       {showPopup && (
         <div className="popup">
           <div className="popup-content">
@@ -71,6 +110,7 @@ const ReviewAnswers = ({ attemptId }) => {
           </div>
         </div>
       )}
+      
       {submitLoading && <p>Submitting...</p>}
       {submitError && <p>Error: {submitError}</p>}
       {submitSuccess && <p>Submitted successfully!</p>}
@@ -79,6 +119,122 @@ const ReviewAnswers = ({ attemptId }) => {
 };
 
 export default ReviewAnswers;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import React, { useState, useEffect } from 'react';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { fetchReviewRequest } from '../../../actions/Quiz And Feedback Module/ReviewAction';
+// import { submitAttemptRequest } from '../../../actions/Quiz And Feedback Module/SubmitAttemptAction';
+// import '../../../Styles/Quiz And Feedback Module/ReviewAnswers.css';
+// import { useNavigate } from 'react-router-dom';
+
+// const ReviewAnswers = ({ attemptId }) => {
+//   const dispatch = useDispatch();
+//   const reviewData = useSelector((state) => state.Review.reviewData);
+//   const loading = useSelector((state) => state.Review.loading);
+//   const error = useSelector((state) => state.Review.error);
+//   const submitLoading = useSelector((state) => state.SubmitAttempt.loading);
+//   const submitError = useSelector((state) => state.SubmitAttempt.error);
+//   const submitSuccess = useSelector((state) => state.SubmitAttempt.success);
+//   const AttemptId = reviewData.learnerAttemptId;
+//   const [showPopup, setShowPopup] = useState(false);
+//   const navigate = useNavigate();
+
+//   useEffect(() => {
+//     if (attemptId) {
+//       dispatch(fetchReviewRequest(attemptId));
+//       console.log(attemptId);
+//     }
+//   }, [dispatch, attemptId]);
+
+//   const handleSubmit = () => {
+//     dispatch(submitAttemptRequest(AttemptId));
+//     console.log("submit :",AttemptId);
+//     setShowPopup(false);
+//   };
+
+//   const handleNavigate = () => {
+//     navigate('/attemptquiz');
+//   }
+
+// //   if (loading) {
+// //     return <p>Loading...</p>;
+// //   }
+
+//   if (error) {
+//     return <p>Error: {error}</p>;
+//   }
+
+//   if (!reviewData || !Array.isArray(reviewData.questionsAndAnswers) || reviewData.questionsAndAnswers.length === 0) {
+//     return <p>No data available.</p>;
+//   }
+
+//   return (
+//     <div className="review-container">
+//       {reviewData.questionsAndAnswers.map((question, index) => (
+//         <div key={question.quizQuestionId} className="question-container">
+//           <h5>{index + 1}: {question.question}</h5>
+//           <ul>
+//             {question.options.map((option, optionIndex) => (
+//               <li key={optionIndex}>
+//                 <input
+//                   type={question.questionType === 'MSQ' ? 'checkbox' : 'radio'}
+//                   name={question.quizQuestionId}
+//                   value={option}
+//                   checked={Array.isArray(question.selectedOption) ? question.selectedOption.includes(option) : question.selectedOption === option}
+//                   readOnly
+//                 />
+//                 {option}
+//               </li>
+//             ))}
+//           </ul>
+//         </div>
+//       ))}
+//       <button className="submit-button" onClick={() => setShowPopup(true)}>Submit</button>
+//       <button className="previous-button" onClick={handleNavigate}>Previous Page</button>
+//       {showPopup && (
+//         <div className="popup">
+//           <div className="popup-content">
+//             <p>Are you sure you want to submit?</p>
+//             <button onClick={handleSubmit}>Submit</button>
+//             <button onClick={() => setShowPopup(false)}>Cancel</button>
+//           </div>
+//         </div>
+//       )}
+//       {submitLoading && <p>Submitting...</p>}
+//       {submitError && <p>Error: {submitError}</p>}
+//       {submitSuccess && <p>Submitted successfully!</p>}
+//     </div>
+//   );
+// };
+
+// export default ReviewAnswers;
 
 
 

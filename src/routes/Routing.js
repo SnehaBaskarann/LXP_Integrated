@@ -17,6 +17,8 @@ import LearnerCoursepageView from "../View/Quiz And Feedback Module/LearnerCours
 import QuizInstruction from "../components/Quiz And Feedback Module/QuizComponents/QuizInstruction";
 import AttemptQuiz from "../components/Quiz And Feedback Module/QuizComponents/AttemptQuiz";
 import ReviewAnswers from "../components/Quiz And Feedback Module/QuizComponents/ReviewAnswers";
+import LearnerCoursepage from "../components/Quiz And Feedback Module/QuizComponents/LearnerCoursepage";
+import LearnerScorePage from "../components/Quiz And Feedback Module/QuizComponents/LearnerScorePage";
 
 function Routing() {
   return (
@@ -34,6 +36,7 @@ function Routing() {
         <Route path="/instruction" element={<QuizInstruction/>} />
         <Route path="/attemptquiz" element={<AttemptQuiz />} />
         <Route path="/reviewanswer" element={<ReviewAnswers />} />
+        <Route path="/learnerscorepage" element={<LearnerScorePage />} />
       </Routes>
     </BrowserRouter>
   );
