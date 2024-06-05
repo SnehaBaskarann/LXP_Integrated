@@ -48,13 +48,16 @@ export const LearnerScorePage = () => {
  };
 
     return (
+      <div>
+          <AdminNavbar />
+     
         <div class="container">
       <div >
         <button
           class="btn btn-light"
           style={{
-            marginLeft: "95%",
-            marginTop: "5%",
+            marginLeft: "100%",
+            marginTop: "60%",
             backgroundColor: "#365486",
             color: "white",
             width: "50",
@@ -64,7 +67,7 @@ export const LearnerScorePage = () => {
           Back
         </button>
       </div>
-      <AdminNavbar />
+    
       <Container fluid id="container" style={divStyle}>
         <Box
           id="instruction"
@@ -108,81 +111,109 @@ export const LearnerScorePage = () => {
               <Typography>
                 <br></br>
               </Typography>
-              <Typography>
-                {learnersAttemptId ? (
-                  <div className="scorecard">
-                    {learnersAttemptId.score >= quizinstructions.passMark ? (
-                      <>
-                        <h1>Pass</h1>
-                        <div>
-                          <div class="emoji emoji--haha">
-                            <div class="emoji__face">
-                              <div class="emoji__eyes"></div>
-                              <div class="emoji__mouth">
-                                <div class="emoji__tongue"></div>
+ <Typography>
+                  {learnersAttemptId ? (
+                    <div className="scorecard">
+                      {learnersAttemptId.score >= quizinstructions.passMark ? (
+                        <>
+                          <h1>
+                            Contragulations {getlearners.learnerFirstName}{" "}
+                            {getlearners.learnerLastName}❗🎉
+                          </h1>
+                          <h1>
+                            You Passed the {quizinstructions.nameOfQuiz}
+                            Assessment
+                          </h1>
+                          <h1>Your Score is {learnersAttemptId.score} </h1>
+                          <div>
+                            <div class="emoji emoji--haha">
+                              <div class="emoji__face">
+                                <div class="emoji__eyes"></div>
+                                <div class="emoji__mouth">
+                                  <div class="emoji__tongue"></div>
+                                </div>
+                              </div>
+                            </div>
+ 
+                            <div class="emoji emoji--yay">
+                              <div class="emoji__face">
+                                <div class="emoji__eyebrows"></div>
+                                <div class="emoji__mouth"></div>
+                              </div>
+                            </div>
+                            <div class="emoji emoji--wow">
+                              <div class="emoji__face">
+                                <div class="emoji__eyebrows"></div>
+                                <div class="emoji__eyes"></div>
+                                <div class="emoji__mouth"></div>
                               </div>
                             </div>
                           </div>
-
-                          <div class="emoji emoji--yay">
-                            <div class="emoji__face">
-                              <div class="emoji__eyebrows"></div>
-                              <div class="emoji__mouth"></div>
-                            </div>
-                          </div>
-                          <div class="emoji emoji--wow">
+                        </>
+                      ) : (
+                        <>
+ 
+                          <h3>
+                            OOPS☹❗ You not cleared the{" "}
+                            {quizinstructions.nameOfQuiz} Assessment
+                          </h3>
+                           <h5>You can retake the quiz now or again revise the courses</h5>
+                          {/* <div class="emoji emoji--sad">
                             <div class="emoji__face">
                               <div class="emoji__eyebrows"></div>
                               <div class="emoji__eyes"></div>
                               <div class="emoji__mouth"></div>
                             </div>
-                          </div>
-                        </div>
-                      </>
-                    ) : (
-                      <>
-                        <h1>Fail</h1>
-                        <div class="emoji emoji--sad">
-                          <div class="emoji__face">
-                            <div class="emoji__eyebrows"></div>
-                            <div class="emoji__eyes"></div>
-                            <div class="emoji__mouth"></div>
-                          </div>
-                        </div>
-                        <div style={{ marginLeft: "100%" }}>
-                          <Button
-                            variant="default"
-                            style={{
-                              backgroundColor: "#365486",
-                              color: "whitesmoke",
-                              width: "150px",
-                            }}
+                          </div> */}
+                          <div
+                            style={{ marginLeft: "-1%", marginTop: "20%" }}
                           >
-                            Retake Quiz
-                          </Button>
-                          <Button
-                            variant="default"
-                            style={{
-                              backgroundColor: "#365486",
-                              color: "whitesmoke",
-                              width: "150px",
-                            }}
+                            <Button
+                              variant="default"
+                              style={{
+                                backgroundColor: "#365486",
+                                color: "whitesmoke",
+                                width: "150px",
+                                marginLeft: "50%",
+                              }}
+                              onClick={() => {
+                                navigate("/instruction");
+                              }}
+                            >
+                              Retake Quiz
+                            </Button>
+                          </div>
+                          <div
+                            style={{ marginLeft: "-210%", marginTop: "-6%" }}
                           >
-                            GO To Course
-                          </Button>
-                        </div>
-                      </>
-                    )}
-                  </div>
-                ) : (
-                  <p>Loading learner data...</p>
-                )}
-              </Typography>
-              <Typography>{/* <b>All the Best !</b> */}</Typography>
+                            <Button
+                              variant="default"
+                              style={{
+                                backgroundColor: "#365486",
+                                color: "whitesmoke",
+                                width: "150px",
+                                marginLeft: "50%",
+                              }}
+                              onClick={() => {
+                                navigate("/quizengine");
+                              }}
+                            >
+                              Go To Course
+                            </Button>
+                          </div>
+                        </>
+                      )}
+                    </div>
+                  ) : (
+                    <p>Loading learner data...</p>
+                  )}
+                </Typography>
+           
             </CardContent>
           </Card>
         </Box>
       </Container>
+    </div>
     </div>
   );
   

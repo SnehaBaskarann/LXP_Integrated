@@ -11,8 +11,9 @@ import AdminNavbar from "./AdminNavbar";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import QuestionTemplate from "../../../components/Quiz And Feedback Module/QuizComponents/QuestionTemplate";
-import "../../../Styles/Quiz And Feedback Module/CreateQuiz.css";
+// import "../../../Styles/Quiz And Feedback Module/CreateQuiz.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "../../../Styles/Quiz And Feedback Module/CreateQuiz.css";
 import {
   ValidationQuizTitle,
   ValidationDuration,
@@ -27,8 +28,9 @@ import { editQuizDetailsRequest } from "../../../actions/Quiz And Feedback Modul
 import QuestionTemplateView from "../../../View/Quiz And Feedback Module/QuestionTemplateView";
 
 export const Home = () => {
-  const quizId = sessionStorage.getItem('quizId');
+    const quizId = sessionStorage.getItem('quizId');
     const topicId = sessionStorage.getItem('topicId');
+    // console.log("create page topic id", topicId);
  
     const dispatch = useDispatch();
     const navigate = useNavigate();

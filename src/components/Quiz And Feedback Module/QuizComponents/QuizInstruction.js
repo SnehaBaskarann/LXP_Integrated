@@ -52,6 +52,12 @@ const [TakeQuiz,setTakeQuiz]=useState({
   };
 //  console.log("takequiz");
   const handleTakeQuiz=()=>{
+     sessionStorage.removeItem('selectedOptions');
+     sessionStorage.removeItem('reviewData');
+
+     sessionStorage.setItem("quizId",quizId);
+     sessionStorage.setItem("LearnerId",LearnerId);
+     
      dispatch(CreateAttemptRequest(TakeQuiz));
      navigate("/attemptquiz");
   }

@@ -11,7 +11,7 @@ import { fetchQuizIdRequest } from "../../../actions/Quiz And Feedback Module/Fe
 
 function CoursePage() {
   const [noQuizTopicId, setNoQuizTopicId] = useState(
-    "f50d40ae-9eb5-4674-80f1-c5a25f6e2a0d"
+    "c3d0f67b-17e1-4042-a835-d5cd2119aceb"
   );
   const [yesQuizTopicId, setYesQuizTopicId] = useState(
     "6c4bcc2f-535d-4792-a978-da9e75047120"
@@ -24,8 +24,8 @@ function CoursePage() {
 
   console.log("course page quizId", quizId, isSuccess);
 
-  const handleAddQuiz = async (topicId) => {
-    console.log("handleAddQuiz called with topicId:", topicId);
+  const handleAddQuiz = (topicId) => {
+    console.log("handleAddQuiz called with topicId:", topicId, quizId);
     setTopicId(topicId);
     dispatch(fetchQuizIdRequest(topicId));
     sessionStorage.setItem("topicId", topicId);

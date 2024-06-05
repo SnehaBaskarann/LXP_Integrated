@@ -14,7 +14,6 @@ const GetLearnerIDApi =
   async (action) => {
     if (action.type === FETCH_LEARNERID_REQUEST) {
       const learnerId = action.payload;
-      debugger;
       if (!learnerId) {
         console.error("API ERROR: LearnerId is undefined");
         dispatch(fetchlearneridFailure("LearnerId is undefined."));

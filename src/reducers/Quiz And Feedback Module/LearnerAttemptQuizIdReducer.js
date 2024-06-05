@@ -5,6 +5,7 @@ import {
   } from '../../../src/actions/Quiz And Feedback Module/AttemptQuizAction';
  
 const initialState = {
+  attemptId:null,
   loading: false,
   error: null,
 };
@@ -15,7 +16,7 @@ const LearnerAttemptQuizIdReducer = (state = initialState, action) => {
       return { ...state, loading: true };
     case CREATE_ATTEMPT_SUCCESS:
       console.log("LearnerAttemptQuizId Reducer", action.payload);
-      return { ...state, loading: false, questions: action.payload };
+      return { ...state, loading: false, attemptId: action.payload };
     case CREATE_ATTEMPT_FAILURE:
       return { ...state, loading: false, error: action.payload };
     default:

@@ -102,7 +102,7 @@ input[type="checkbox"] {
 
 .previous-button,
 .next-button,
-.submit-button {
+.review-button {
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
@@ -110,6 +110,7 @@ input[type="checkbox"] {
   border-radius: 5px;
   color: white;
   background-color: #007bff;
+  width: 120px;
 }
 
 .previous-button:hover,
@@ -124,13 +125,13 @@ input[type="checkbox"] {
   cursor: not-allowed;
 }
 
-.submit-button {
+.review-button {
   display: block;
   background-color: #0d0932d0;
   margin-top: 20px;
 }
 
-.submit-button:hover {
+.review-button:hover {
   background-color: #0758ee8b;
 }
 
@@ -155,13 +156,18 @@ input[type="checkbox"] {
   }
 
   .question-container,
-  .submit-button {
+  .review-button {
     max-width: 100%;
   }
 
-  .submit-button {
+  .review-button {
     position: static;
     transform: none;
     margin-top: 20px;
   }
 }
+
+.learner-attemptquiz{
+  margin-top: -40%;
+}
+
