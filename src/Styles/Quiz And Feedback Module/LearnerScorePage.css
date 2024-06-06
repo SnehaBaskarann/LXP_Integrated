@@ -3,7 +3,7 @@
     padding: 0;
 }
 
-.container {
+.container-score {
     margin: 0;
     width: 1200px;
     max-width: 100%;
@@ -76,9 +76,9 @@
 /*common css end*/
 /*emoji-haha css start*/
 
-.emoji--haha:after {
+/* .emoji--haha:after {
     content: "Haha";
-}
+} */
 
 .emoji--haha .emoji__face {
     animation: haha-face 2s linear infinite;
@@ -131,7 +131,7 @@
 
 /*emoji-yay css start*/
 .emoji--yay:after {
-    content: "Yay";
+    /* content: "Yay"; */
     animation: yay-reverse 1s linear infinite;
 }
 
@@ -207,9 +207,9 @@
 
 /*emoji-wow css start*/
 
-.emoji--wow:after {
+/* .emoji--wow:after {
     content: "Wow";
-}
+} */
 
 .emoji--wow .emoji__face {
     animation: wow-face 3s linear infinite;
@@ -273,9 +273,9 @@
 
 /*emoji-sad css start*/
 
-.emoji--sad:after {
+/* .emoji--sad:after {
     content: "Sad";
-}
+} */
 
 .emoji--sad .emoji__face {
     -webkit-animation: sad-face 2s ease-in infinite;
