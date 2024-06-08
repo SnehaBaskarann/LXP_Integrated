@@ -4,9 +4,7 @@ import "../../../Styles/Quiz And Feedback Module/CreateQuiz.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import {
-  createquizfeedbackRequest,
-} from "../../../actions/Quiz And Feedback Module/QuizFeedbackAction";
+import {createquizfeedbackRequest,} from "../../../actions/Quiz And Feedback Module/QuizFeedbackAction";
 import { useDispatch } from 'react-redux';
 import AdminNavbar from './AdminNavbar';
 import { useLocation } from 'react-router-dom';
@@ -17,7 +15,6 @@ import Alert from "@mui/material/Alert";
 
 export const ReviewQuestions = () => {
 
-  
 const [selectedQuestion, setSelectedQuestion] = useState(null);
     const location = useLocation();
     const [error, setError] = useState('');

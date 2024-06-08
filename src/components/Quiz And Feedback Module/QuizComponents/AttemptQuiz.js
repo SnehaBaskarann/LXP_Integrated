@@ -7,6 +7,8 @@ import { useNavigate } from 'react-router-dom';
 import '../../../Styles/Quiz And Feedback Module/AttemptQuiz.css';
 import AdminNavbar from './AdminNavbar';
 
+
+
 const AttemptQuiz = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
