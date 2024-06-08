@@ -26,7 +26,7 @@ const LearnerScorePageApi =
       //     return next(action);
       //   }
       try {
-        const API_URL = `${baseUrl}/api/QuizEngine/attempt/${learnerattemptid}`;
+        const API_URL = `${baseUrl}/api/QuizEngine/attempts/${learnerattemptid}/result`;
         console.log("learnerscore", API_URL);
         const response = await axios.get(API_URL);
         console.log("learner score", response.data);
