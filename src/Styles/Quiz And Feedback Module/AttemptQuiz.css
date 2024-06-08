@@ -30,9 +30,9 @@
 }
 
 .navbar {
-  width: 330px;
-  height: 300px;
-  padding: 20px;
+  /* width: 300px; */
+  /* height: 300px; */
+  padding: 35px;
   /* background-color: #eaeaea; */
   background-color:rgb(237, 231, 231);
   border-right: 1px solid #ddd;
@@ -48,6 +48,7 @@
 
 .navbar button:hover {
   background-color: #0056b3;
+  color: white;
 }
 
 .main-content1 {

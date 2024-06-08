@@ -104,7 +104,7 @@ function QuizInstruction() {
             <CardContent>
               <Divider inset="none" id="divider" />
               <Typography level="title-md">
-                Duration : {quizinstructions.duration}{" "}
+                Duration : {quizinstructions.duration}{" "} (In Minutes)
               </Typography>
               <Typography level="title-md">
                 Pass Mark : {quizinstructions.passMark}{" "}
