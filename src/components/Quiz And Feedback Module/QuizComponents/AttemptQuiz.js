@@ -6,6 +6,7 @@ import { selectAnswerRequest } from '../../../actions/Quiz And Feedback Module/S
 import { useNavigate } from 'react-router-dom';
 import '../../../Styles/Quiz And Feedback Module/AttemptQuiz.css';
 import AdminNavbar from './AdminNavbar';
+import Timer from "../../../components/Quiz And Feedback Module/QuizComponents/Timer";
 
 
 
@@ -106,6 +107,7 @@ const AttemptQuiz = () => {
   return (
     <div className='learner-attemptquiz'>
       <AdminNavbar />
+  <Timer/>
       <div className="attempt-quiz-page">
         <h1 className="quiz-title">Attempt Quiz</h1>
         <div className="quiz-content">

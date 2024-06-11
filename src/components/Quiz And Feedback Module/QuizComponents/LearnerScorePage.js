@@ -51,7 +51,8 @@ export const LearnerScorePage = () => {
       <AdminNavbar />
       <div class="container">
         <div>
-          <button
+
+          {/* <button
             class="btn btn-light"
             style={{
               marginLeft: "100%",
@@ -62,7 +63,8 @@ export const LearnerScorePage = () => {
             }}
           >
             Back
-          </button>
+          </button> */}
+
         </div>
         {/* <AdminNavbar /> */}
         <Container fluid id="container" style={divStyle}>
@@ -158,6 +160,7 @@ export const LearnerScorePage = () => {
                                   color: "whitesmoke",
                                   width: "150px",
                                   marginLeft: "50%",
+                                  
                                 }}
                                 onClick={() => {
                                   navigate("/quizengine");
@@ -174,10 +177,7 @@ export const LearnerScorePage = () => {
                             OOPS☹❗ You not cleared the{" "}
                             {quizinstructions.nameOfQuiz} Assessment
                           </h3>
-                          <h5>
-                            You can retake the quiz now or again revise the
-                            courses
-                          </h5>
+                          
                           <h5>Your Score is {learnerAttempt.score} </h5>
                          
  
@@ -192,6 +192,7 @@ export const LearnerScorePage = () => {
                             learnerAttempt.currentAttempt ===
                           0 ? (
                             <>
+                           
                               <h5>Your Attempt is over...</h5>
                             </>
                           ) : (
@@ -202,6 +203,10 @@ export const LearnerScorePage = () => {
                                   learnerAttempt.currentAttempt}{" "}
                                 more attempts to finish the quiz...
                               </h5>
+                              <h5>
+                            You can retake the quiz now or again revise the
+                            courses
+                          </h5>
                               <div
                                 style={{ marginLeft: "-1%", marginTop: "20%" }}
                               >
@@ -211,7 +216,8 @@ export const LearnerScorePage = () => {
                                     backgroundColor: "#365486",
                                     color: "whitesmoke",
                                     width: "150px",
-                                    marginLeft: "50%",
+                                    marginLeft: "60%",
+                                    marginTop: "-150px"
                                   }}
                                   onClick={() => {
                                     navigate("/instruction");
@@ -232,7 +238,8 @@ export const LearnerScorePage = () => {
                                     backgroundColor: "#365486",
                                     color: "whitesmoke",
                                     width: "150px",
-                                    marginLeft: "50%",
+                                    marginLeft: "70%",
+                                    marginTop: "-120px"
                                   }}
                                   onClick={() => {
                                     navigate("/quizengine");

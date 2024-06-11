@@ -17,7 +17,7 @@ export const GetAllFeedbackApi =
         const response = await axios.get(
           `http://localhost:5199/api/QuizFeedback/GetFeedbackQuestionsByQuizId/${action.payload}`
         );
-        console.log("API Response:", response.data);
+        console.log("API Response quiz:", response.data);
         dispatch(fetchallquizfeedbackSuccess(response.data.data));
       } catch (error) {
         console.error("API Error:", error.message);

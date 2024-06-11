@@ -7,6 +7,8 @@ import { PiFileCssFill } from "react-icons/pi";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchQuizInstructionRequest } from "../../../actions/Quiz And Feedback Module/QuizInstructionAction";
+import { fetchtopicfeedbackquestionrequest } from "../../../actions/Quiz And Feedback Module/FetchTopicFeedbackQuestionAction";
+import { fetchQuizIdRequest } from "../../../actions/Quiz And Feedback Module/FetchQuizIdAction";
 
 function LearnerCoursepage() {
   const [noQuizTopicId, setNoQuizTopicId] = useState(
@@ -40,6 +42,19 @@ function LearnerCoursepage() {
     if (isSuccess) {
       navigate("/instruction");
     }
+  };
+
+  const handleGiveFeedback = async (topicId) => {
+    dispatch(fetchtopicfeedbackquestionrequest(topicId));
+    sessionStorage.setItem("topicId", topicId);
+      navigate("/topicfeedbackquestion");
+   
+  };
+ 
+  const handleQuizGiveFeedback = async (topicId) => {
+    dispatch(fetchQuizIdRequest(topicId));
+    sessionStorage.setItem("quizId",quizId);
+    navigate("/quizfeedbackquestion");
   };
 
   //   const handleFeedback = (topicId) => {
@@ -94,6 +109,26 @@ function LearnerCoursepage() {
                     >
                       Take Quiz
                     </Button>
+                    <Button
+                        variant="warning"
+                        size="sm"
+                        style={{ marginLeft: "5px" }}
+                        onClick={() => {
+                          handleGiveFeedback(yesQuizTopicId);
+                        }}
+                      >
+                        Give Feedback
+                      </Button>
+                      <Button
+                        variant="success"
+                        size="sm"
+                        style={{ marginLeft: "5px" }}
+                        onClick={() => {
+                          handleQuizGiveFeedback(yesQuizTopicId);
+                        }}
+                      >
+                        Give QuizFeedback
+                      </Button>
                     {/* <Button variant="secondary" size="sm" onClick={() => { handleFeedback(yesQuizTopicId) }} style={{ marginLeft: "5px" }}>Add Feedback</Button>
                     <Button variant="secondary" size="sm" onClick={() => { handleQuizFeedback(yesQuizTopicId) }} style={{ marginLeft: "5px" }}>Add Quiz Feedback</Button> */}
                   </div>
@@ -124,6 +159,26 @@ function LearnerCoursepage() {
                         }}
                       >
                         Take Quiz
+                      </Button>
+                      <Button
+                        variant="warning"
+                        size="sm"
+                        style={{ marginLeft: "5px" }}
+                        onClick={() => {
+                          handleGiveFeedback(yesQuizTopicId);
+                        }}
+                      >
+                        Give Feedback
+                      </Button>
+                      <Button
+                        variant="success"
+                        size="sm"
+                        style={{ marginLeft: "5px" }}
+                        onClick={() => {
+                          handleQuizGiveFeedback();
+                        }}
+                      >
+                        Give QuizFeedback
                       </Button>
                       {/* <Button onClick={() => { handleFeedback(noQuizTopicId) }} variant="secondary" size="sm" style={{ marginLeft: "5px" }}>Add Feedback</Button>
                     <Button onClick={() => { handleQuizFeedback(noQuizTopicId) }} variant="secondary" size="sm" style={{ marginLeft: "5px" }}>Add Quiz Feedback</Button> */}

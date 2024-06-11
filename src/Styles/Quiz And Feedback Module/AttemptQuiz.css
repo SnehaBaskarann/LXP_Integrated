@@ -42,6 +42,7 @@
   align-self: flex-start;
   border-radius: 5px;
   margin-right: 20px;
+
 }
 
 
@@ -186,6 +187,7 @@ input[type="checkbox"] {
   height: 40px;
   border-radius: 5px;
   text-align: center;
+  font-weight: bold;
 }
 
 /* .navbar button {
@@ -201,4 +203,18 @@ input[type="checkbox"] {
 
 .navbar button:focus {
   outline: none;
+}
+
+
+.flag-button {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.flag-button.flagged {
+  background-color: red;
+  color: white;
 }

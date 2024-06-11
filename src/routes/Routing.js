@@ -19,6 +19,8 @@ import AttemptQuiz from "../components/Quiz And Feedback Module/QuizComponents/A
 import ReviewAnswers from "../components/Quiz And Feedback Module/QuizComponents/ReviewAnswers";
 import LearnerCoursepage from "../components/Quiz And Feedback Module/QuizComponents/LearnerCoursepage";
 import { LearnerScorePage } from "../components/Quiz And Feedback Module/QuizComponents/LearnerScorePage";
+import TopicFeedbackquestion from "../components/Quiz And Feedback Module/QuizComponents/FetchTopicFeedbackQuestion";
+import FetchQuizFeedbackQuestion from "../components/Quiz And Feedback Module/QuizComponents/FetchQuizFeedbackQuestion";
 
 function Routing() {
   return (
@@ -37,6 +39,8 @@ function Routing() {
         <Route path="/attemptquiz" element={<AttemptQuiz />} />
         <Route path="/reviewanswer" element={<ReviewAnswers />} />
         <Route path="/learnerscorepage" element={<LearnerScorePage />} />
+        <Route path="/topicfeedbackquestion" element={<TopicFeedbackquestion/>} />
+        <Route path="/quizfeedbackquestion" element={<FetchQuizFeedbackQuestion/>} />
       </Routes>
     </BrowserRouter>
   );

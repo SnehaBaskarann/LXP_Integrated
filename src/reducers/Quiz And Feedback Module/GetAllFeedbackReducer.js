@@ -2,7 +2,7 @@ import React from 'react'
 // import { FETCH_ALL_QUIZFEEDBACK_REQUEST,FETCH_ALL_QUIZFEEDBACK_SUCCESS,FETCH_ALL_QUIZFEEDBACK_FAILURE } from '../actions/GetAllQuizFeedbackAction';
 import { FETCH_ALL_QUIZFEEDBACK_REQUEST,FETCH_ALL_QUIZFEEDBACK_SUCCESS,FETCH_ALL_QUIZFEEDBACK_FAILURE } from '../../actions/Quiz And Feedback Module/GetAllQuizFeedbackAction'; 
 const initialState = { 
-    quizfeedback: [],
+    quizfeedback: null,
     loading: false,
     error: null,
     isSubmitted:false,
@@ -22,7 +22,7 @@ const initialState = {
         return {
           ...state,
           loading: false,
-          quizfeedback: [...state.quizfeedback, action.payload],
+          quizfeedback:action.payload,
           isSubmitted:true,
           error: null,
         };
