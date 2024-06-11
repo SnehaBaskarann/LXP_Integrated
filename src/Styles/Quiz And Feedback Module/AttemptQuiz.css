@@ -42,10 +42,7 @@
   align-self: flex-start;
   border-radius: 5px;
   margin-right: 20px;
-
 }
-
-
 
 .navbar button:hover {
   background-color: #0056b3;
@@ -68,6 +65,11 @@
   border: 1px solid #ddd;
   height: 300px;
   overflow-y: auto;
+  /* font-weight: bold; */
+}
+
+.quiz-question {
+  /* font-weight: bold; */
 }
 
 .question-container h5 {
