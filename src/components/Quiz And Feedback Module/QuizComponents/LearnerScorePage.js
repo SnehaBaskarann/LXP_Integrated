@@ -113,7 +113,7 @@ export const LearnerScorePage = () => {
                 <Typography>
                   {learnerAttempt ? (
                     <div className="scorecard">
-                      <h1>The time taken : {learnerAttempt.timeTaken}</h1>
+                      <h1>The time taken : {learnerAttempt.timeTaken/60}</h1>
                       {learnerAttempt.isPassed === true ? (
                         <>
                           <h1>

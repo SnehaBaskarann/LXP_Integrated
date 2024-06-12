@@ -1,10 +1,9 @@
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 import { ImFolderUpload } from "react-icons/im";
 import { BiSolidCoinStack } from "react-icons/bi";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import UploadBulkQuiz from "../QuizComponents/Quiz And Feedback Module/UploadBulkQuiz";
-
 
 function StaticExample() {
   return (
