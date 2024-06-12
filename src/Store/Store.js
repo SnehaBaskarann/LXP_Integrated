@@ -34,28 +34,28 @@ import DeleteQuizFeedbackReducer from "../reducers/Quiz And Feedback Module/Dele
 import DeleteTopicFeedbackReducer from "../reducers/Quiz And Feedback Module/DeleteTopicFeedbackReducer";
 import UpdateTopicFeedbackReducer from "../reducers/Quiz And Feedback Module/UpdateTopicFeedbackReducer";
 import GetByIDTopicFeedbackReducer from "../reducers/Quiz And Feedback Module/GetByIDTopicFeedbackReducer";
-import AttemptQuizReducer from "../reducers/Quiz And Feedback Module/AttemptQuizReducer";
-import QuizInstructionReducer from "../reducers/Quiz And Feedback Module/QuizInstructionReducer";
-import { QuizInstructionApi } from "../middleware/Quiz And Feedback Module/QuizInstructionApi";
-import LearnerAttemptQuizIdReducer from "../reducers/Quiz And Feedback Module/LearnerAttemptQuizIdReducer.js";
-import LearnerAttemptQuizIdApi from "../middleware/Quiz And Feedback Module/LearnerAttemptQuizIdApi.js";
-import GetLearnerIDReducer from "../reducers/Quiz And Feedback Module/GetLearnerIDReducer.js";
-import GetLearnerIDApi from "../middleware/Quiz And Feedback Module/GetLearnerIDApi.js";
-import reviewReducer from "../reducers/Quiz And Feedback Module/ReviewReducer";
-import reviewApi from "../middleware/Quiz And Feedback Module/ReviewApi";
-import { fetchQuestionsMiddleware } from "../middleware/Quiz And Feedback Module/AttemptQuizApi";
-import SelectAnswerReducer from "../reducers/Quiz And Feedback Module/SelectAnswerReducer";
-import submitAttemptReducer from "../reducers/Quiz And Feedback Module/SubmitAttemptReducer";
-import { selectAnswerMiddleware } from "../middleware/Quiz And Feedback Module/SelectAnswerApi";
-import submitAttemptMiddleware from "../middleware/Quiz And Feedback Module/SubmitAttemptMiddleware";
-import LearnerScorePageReducer from "../reducers/Quiz And Feedback Module/LearnerScorePageReducer";
-import LearnerScorePageApi from "../middleware/Quiz And Feedback Module/LearnerScorePageApi";
-import FetchTopicFeedbackQuestionReducer from "../reducers/Quiz And Feedback Module/FetchTopicFeedbackQuestionReducer";
-import { FetchTopicFeedbackQuestionApi } from "../middleware/Quiz And Feedback Module/FetchTopicFeedbackQuestionApi";
-import TopicFeedbackResponseReducer from "../reducers/Quiz And Feedback Module/TopicFeedbackResponseReducer.js";
-import { TopicFeedbackResponseApi } from "../middleware/Quiz And Feedback Module/TopicFeedbackResponseApi.js";
-import QuizFeedbackResponseReducer from "../reducers/Quiz And Feedback Module/QuizFeedbackResponseReducer.js"
-import { QuizFeedbackResponseApi } from "../middleware/Quiz And Feedback Module/QuizFeedbackResponseApi.js";
+import AttemptQuizReducer from "../reducers/Quiz And Feedback Module/Learner/AttemptQuizReducer";
+import QuizInstructionReducer from "../reducers/Quiz And Feedback Module/Learner/QuizInstructionReducer";
+import { QuizInstructionApi } from "../middleware/Quiz And Feedback Module/Learner/QuizInstructionApi";
+import LearnerAttemptQuizIdReducer from "../reducers/Quiz And Feedback Module/Learner/LearnerAttemptQuizIdReducer.js";
+import LearnerAttemptQuizIdApi from "../middleware/Quiz And Feedback Module/Learner/LearnerAttemptQuizIdApi.js";
+import GetLearnerIDReducer from "../reducers/Quiz And Feedback Module/Learner/GetLearnerIDReducer.js";
+import GetLearnerIDApi from "../middleware/Quiz And Feedback Module/Learner/GetLearnerIDApi.js";
+import reviewReducer from "../reducers/Quiz And Feedback Module/Learner/ReviewReducer";
+import reviewApi from "../middleware/Quiz And Feedback Module/Learner/ReviewApi";
+import { fetchQuestionsMiddleware } from "../middleware/Quiz And Feedback Module/Learner/AttemptQuizApi";
+import SelectAnswerReducer from "../reducers/Quiz And Feedback Module/Learner/SelectAnswerReducer";
+import submitAttemptReducer from "../reducers/Quiz And Feedback Module/Learner/SubmitAttemptReducer";
+import { selectAnswerMiddleware } from "../middleware/Quiz And Feedback Module/Learner/SelectAnswerApi";
+import submitAttemptMiddleware from "../middleware/Quiz And Feedback Module/Learner/SubmitAttemptMiddleware";
+import LearnerScorePageReducer from "../reducers/Quiz And Feedback Module/Learner/LearnerScorePageReducer";
+import LearnerScorePageApi from "../middleware/Quiz And Feedback Module/Learner/LearnerScorePageApi";
+import FetchTopicFeedbackQuestionReducer from "../reducers/Quiz And Feedback Module/Learner/FetchTopicFeedbackQuestionReducer";
+import { FetchTopicFeedbackQuestionApi } from "../middleware/Quiz And Feedback Module/Learner/FetchTopicFeedbackQuestionApi";
+import TopicFeedbackResponseReducer from "../reducers/Quiz And Feedback Module/Learner/TopicFeedbackResponseReducer.js";
+import { TopicFeedbackResponseApi } from "../middleware/Quiz And Feedback Module/Learner/TopicFeedbackResponseApi.js";
+import QuizFeedbackResponseReducer from "../reducers/Quiz And Feedback Module/Learner/QuizFeedbackResponseReducer.js";
+import { QuizFeedbackResponseApi } from "../middleware/Quiz And Feedback Module/Learner/QuizFeedbackResponseApi.js";
 
 export const rootReducer = combineReducers({
   quizId: quizIdReducer,
@@ -73,17 +73,21 @@ export const rootReducer = combineReducers({
   deletetopicfeedback: DeleteTopicFeedbackReducer,
   updatetopicfeedback: UpdateTopicFeedbackReducer,
   fetchtopicfeedbackid: GetByIDTopicFeedbackReducer,
+ 
+
+
+  //Learner side
+  fetchlearnerid: GetLearnerIDReducer,
   AttemptQuiz: AttemptQuizReducer,
-  fetchquizinstruction:QuizInstructionReducer,
-  learnerattempt:LearnerAttemptQuizIdReducer,
-  fetchlearnerid :GetLearnerIDReducer,
   Review: reviewReducer,
   SelectAnswer: SelectAnswerReducer,
   SubmitAttempt: submitAttemptReducer,
-  learnerscore : LearnerScorePageReducer,
-  fetchtopicfeedbackquestion:FetchTopicFeedbackQuestionReducer,
-  TopicFeedbackResponse:TopicFeedbackResponseReducer,
-  QuizFeedbackResponse:QuizFeedbackResponseReducer
+  learnerscore: LearnerScorePageReducer,
+  fetchquizinstruction: QuizInstructionReducer,
+  learnerattempt: LearnerAttemptQuizIdReducer,
+  fetchtopicfeedbackquestion: FetchTopicFeedbackQuestionReducer,
+  TopicFeedbackResponse: TopicFeedbackResponseReducer,
+  QuizFeedbackResponse: QuizFeedbackResponseReducer,
 });
 
 const store = createStore(
@@ -99,23 +103,25 @@ const store = createStore(
     TopicFeedbackApi,
     GetAllFeedbackApi,
     GetTopicFeedbackApi,
-   UpdateQuizFeedbackApi,
-  GetByIDFeedbackApi,
-   DeleteTopicFeedbackApi,
-  DeleteQuizFeedbackApi,
-  UpdateTopicFeedbackApi,
+    UpdateQuizFeedbackApi,
+    GetByIDFeedbackApi,
+    DeleteTopicFeedbackApi,
+    DeleteQuizFeedbackApi,
+    UpdateTopicFeedbackApi,
     GetByIDTopicFeedbackApi,
-    fetchQuestionsMiddleware,
-    QuizInstructionApi,
-    LearnerAttemptQuizIdApi,
     GetLearnerIDApi,
+
+    //Learner side
+    fetchQuestionsMiddleware,
     reviewApi,
     selectAnswerMiddleware,
     submitAttemptMiddleware,
     LearnerScorePageApi,
     FetchTopicFeedbackQuestionApi,
     TopicFeedbackResponseApi,
-    QuizFeedbackResponseApi
+    QuizFeedbackResponseApi,
+    QuizInstructionApi,
+    LearnerAttemptQuizIdApi,
   )
 );
 
